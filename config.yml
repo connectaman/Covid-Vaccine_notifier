@@ -1,9 +1,9 @@
 email:
-  sent_from : "aman@techcreativa.com" 
-  email_password : "aman@tc"
+  sent_from : "sender_email_address" 
+  email_password : "sender_email_password"
 
   # [edit] enter receiver email details
-  to : ["winwithaman@gmail.com","inayatulla1996@gmail.com"]
+  to : ["toemail"]
 
 area_info:
 # [edit] enter your district code or pincode
