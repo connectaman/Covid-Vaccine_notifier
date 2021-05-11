@@ -13,3 +13,6 @@ A Covid Vaccine Slot Notifier Python Script
 5. Run the Script using the command "python vaccineSpotter.py"
 
 
+To Understand and use the API from Official use like below link
+https://apisetu.gov.in/public/api/cowin
+
