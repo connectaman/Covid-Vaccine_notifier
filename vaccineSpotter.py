@@ -57,7 +57,8 @@ class vaccineSpotter:
 		print(email_text)
 
 		try:
-			server = smtplib.SMTP_SSL('smtp.hostinger.in', 587)
+			#server = smtplib.SMTP_SSL('smtp.gmail.com', 485) # if you are using gmail to send emails
+			server = smtplib.SMTP_SSL('smtp.hostinger.in', 587) # if you are using your own smtp server
 			server.ehlo()
 			server.login(self.email_user, self.email_password)
 			server.sendmail(self.sent_from, self.to, email_text)
