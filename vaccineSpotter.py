@@ -4,7 +4,10 @@ import os
 import smtplib
 from time import time,ctime
 import yaml
+import json
 
+# mention url
+url = "https://www.fast2sms.com/dev/bulk"
 
 class vaccineSpotter:
 	def __init__(self, config_file_path, time_delay=1):
@@ -39,6 +42,39 @@ class vaccineSpotter:
 		self.age_limit_info = self.cfg['age_limit']
 		self.age_limit = self.age_limit_info['age_limit']
 
+	def send_sms(self,result):
+		# create a dictionary
+		my_data = {
+			# Your default Sender ID
+			'sender_id': 'FSTSMS',
+			# Put your message here!
+			'message': 'Slot is Available, Please Book it ASAP',
+			
+			'language': 'english',
+			'route': 'p',
+			
+			# You can send sms to multiple numbers
+			# separated by comma.
+			'numbers': '8147066971,8147196241,9845115193'	
+		}
+
+		# create a dictionary
+		headers = {
+			'authorization': 'STMk6pzAiO2NqwInaPolesDgr3B0v8mCG57hHUdyJZQRVWf9ut7yg2h6rvNKzqRkjCHFW01ESVeubIOo',
+			'Content-Type': "application/x-www-form-urlencoded",
+			'Cache-Control': "no-cache"
+		}
+
+		# make a post request
+		response = requests.request("POST",
+									url,
+									data = my_data,
+									headers = headers)
+		#load json data from source
+		returned_msg = json.loads(response.text)
+
+		# print the send message
+		print(returned_msg['message'])
 	def send_email(self, result):
 	# turn on allow less secure apps to get email
 	#  https://myaccount.google.com/lesssecureapps
@@ -123,6 +159,7 @@ class vaccineSpotter:
 					result_str = result_str + "age_limit:"+str(center['age_limit'])+"\n"
 					result_str = result_str + "-----------------------------------------------------\n"
 				self.send_email(result_str)
+				self.send_sms(result_str)
 
 			else:
 				print("Vaccines not available for age limit {}\nTrying again\
