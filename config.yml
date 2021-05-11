@@ -1,0 +1,14 @@
+email:
+  sent_from : "aman@techcreativa.com" 
+  email_password : "aman@tc"
+
+  # [edit] enter receiver email details
+  to : ["winwithaman@gmail.com","inayatulla1996@gmail.com"]
+
+area_info:
+# [edit] enter your district code or pincode
+  __district_code : "256" 
+  __pincode : "560078"
+  
+age_limit:
+  age_limit : [45]
